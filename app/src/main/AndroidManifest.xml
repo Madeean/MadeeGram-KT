@@ -14,7 +14,7 @@
       android:theme="@style/Theme.Madeegramkt"
       tools:targetApi="31">
     <activity
-        android:name=".LandingActivity"
+        android:name=".present.view.landing.LandingActivity"
         android:exported="false" />
     <activity
         android:name=".present.view.authentication.RegisterActivity"
