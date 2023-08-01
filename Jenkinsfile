@@ -40,9 +40,10 @@ pipeline {
 
         stage('Unit Tests') {
             steps {
-                dir(env.LOCATION_PROJECT) {
-                    bat "gradlew.bat test"
-                }
+//                 dir(env.LOCATION_PROJECT) {
+//                     bat "gradlew.bat test"
+//                 }
+                bat 'gradle.bat test'
             }
         }
     }
