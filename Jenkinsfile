@@ -4,7 +4,7 @@ pipeline {
     environment {
       ANDROID_HOME = 'D:\\AndroidSdk\\Android\\Sdk'
 //       GRADLE_HOME = "C:\\Users\\ASUS\\.gradle"
-      LOCATION_PROJECT = 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\test'
+      LOCATION_PROJECT = 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\abc'
     }
     stages {
 //         stage('Delete Workspace Dir') {
