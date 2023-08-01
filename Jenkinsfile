@@ -7,17 +7,17 @@ pipeline {
       LOCATION_PROJECT = 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\test'
     }
     stages {
-        stage('Delete Workspace Dir') {
-            steps {
-               script {
-                   try {
-                       deleteDir()
-                   } catch (Exception e) {
-                       echo "Error deleting workspace: ${e.message}"
-                   }
-               }
-            }
-        }
+//         stage('Delete Workspace Dir') {
+//             steps {
+//                script {
+//                    try {
+//                        deleteDir()
+//                    } catch (Exception e) {
+//                        echo "Error deleting workspace: ${e.message}"
+//                    }
+//                }
+//             }
+//         }
 
         stage('Clean Gradle Cache') {
             steps {
