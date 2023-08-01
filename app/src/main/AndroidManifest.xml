@@ -14,6 +14,15 @@
       android:theme="@style/Theme.Madeegramkt"
       tools:targetApi="31">
     <activity
+        android:name=".LandingActivity"
+        android:exported="false" />
+    <activity
+        android:name=".present.view.authentication.RegisterActivity"
+        android:exported="false" />
+    <activity
+        android:name=".present.view.authentication.LoginActivity"
+        android:exported="false" />
+    <activity
         android:name=".present.view.splashscreen.SplashScreenActivity"
         android:exported="true">
       <intent-filter>
@@ -22,6 +31,10 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+
+    <meta-data
+        android:name="preloaded_fonts"
+        android:resource="@array/preloaded_fonts" />
   </application>
 
 </manifest>

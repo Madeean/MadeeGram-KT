@@ -3,24 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:id="@+id/cl_splash"
-    android:background="@drawable/bg_splash_screen"
     android:layout_height="match_parent"
-    tools:context=".present.view.splashscreen.SplashScreenActivity"
+    tools:context=".present.view.landing.LandingActivity"
     >
 
-  <TextView
-      android:layout_width="match_parent"
-      android:textAlignment="center"
-      android:maxLines="1"
-      android:textSize="70sp"
-      android:textColor="@color/white"
-      android:layout_height="wrap_content"
-      android:fontFamily="@font/indie_flower"
-      android:text="MadeeGram"
+  <FrameLayout
+      app:layout_constraintBottom_toTopOf="@id/bottom_navigation_view"
       app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"/>
+
+  <com.google.android.material.bottomnavigation.BottomNavigationView
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      />
+      android:id="@+id/bottom_navigation_view"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
