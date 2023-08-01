@@ -19,29 +19,29 @@ pipeline {
 //             }
 //         }
 
-        stage('Clean Gradle Cache') {
-            steps {
-                script {
-                  dir(env.LOCATION_PROJECT) {
-                    bat "gradlew.bat clean"
-                  }
-                }
-            }
-        }
+//         stage('Clean Gradle Cache') {
+//             steps {
+//                 script {
+//                   dir(env.LOCATION_PROJECT) {
+//                     bat "gradlew.bat clean"
+//                   }
+//                 }
+//             }
+//         }
 
-        stage('Compile & Build APK') {
-            steps {
-                dir(env.LOCATION_PROJECT) {
-                    bat 'java -version'
-                    bat 'gradlew.bat clean assembleDebug'
-                }
-            }
-        }
+//         stage('Compile & Build APK') {
+//             steps {
+//                 dir(env.LOCATION_PROJECT) {
+//                     bat 'java -version'
+//                     bat 'gradlew.bat clean assembleDebug'
+//                 }
+//             }
+//         }
 
         stage('Unit Tests') {
             steps {
                 dir(env.LOCATION_PROJECT) {
-                    bat "gradlew.bat test"
+                    bat "./gradlew test"
                 }
 
 //                    sh './gradlew test'
