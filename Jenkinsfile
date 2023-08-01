@@ -70,5 +70,11 @@ pipeline {
         bat './gradlew clean'
       }
     }
+    stage('test') {
+      steps {
+        // Compile the app and its dependencies
+        bat './gradlew test'
+      }
+    }
   }
 }
