@@ -41,7 +41,9 @@ pipeline {
         stage('Unit Tests') {
             steps {
                 dir(env.LOCATION_PROJECT) {
+                    bat 'java -version'
                     bat "./gradlew clean"
+
                 }
 
 //                    sh './gradlew test'
