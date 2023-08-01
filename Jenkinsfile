@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                   dir(env.LOCATION_PROJECT) {
-                    bat "gradlew.bat clean"
+                    bat "./gradlew clean"
                   }
                 }
             }
@@ -33,7 +33,7 @@ pipeline {
             steps {
                 dir(env.LOCATION_PROJECT) {
                     bat 'java -version'
-                    bat 'gradlew.bat clean assembleDebug'
+                    bat './gradlew clean assembleDebug'
                 }
             }
         }
