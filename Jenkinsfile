@@ -43,7 +43,7 @@ pipeline {
 //                 dir(env.LOCATION_PROJECT) {
 //                     bat "gradlew.bat test"
 //                 }
-                bat 'gradle.bat test'
+                bat 'gradle clean test'
             }
         }
     }
