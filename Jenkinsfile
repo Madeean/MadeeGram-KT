@@ -43,6 +43,7 @@ pipeline {
                 dir(env.LOCATION_PROJECT) {
                     bat 'java -version'
                     bat "./gradlew clean"
+                    bat "./gradlew test"
 
                 }
 
