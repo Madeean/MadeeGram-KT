@@ -43,9 +43,9 @@ pipeline {
 //                 dir(env.LOCATION_PROJECT) {
 //                     bat "gradlew.bat test"
 //                 }
-                dir(env.LOCATION_PROJECT){
+
                    sh './gradlew test'
-                }
+
             }
         }
     }
