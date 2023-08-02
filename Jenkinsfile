@@ -47,14 +47,34 @@ pipeline {
             }
         }
 
-        stage('ui Tests') {
-            steps {
-                dir(env.LOCATION_PROJECT) {
-                    bat "./gradlew connectedDebugAndroidTest"
-
-                }
+        stage('Build & Install') {
+          steps{
+            dir(env.LOCATION_PROJECT) {
+              bat 'chmod +x gradlew && ./gradlew --no-daemon --stacktrace clean :app:assembleDevDebug :app:assembleDevDebugAndroidTest'
             }
+          }
+        //Build the apk and the test apk which will run the tests on the apk
+//           bat 'chmod +x gradlew && ./gradlew --no-daemon --stacktrace clean :app:assembleDevDebug :app:assembleDevDebugAndroidTest'
         }
+
+        stage('ui test') {
+          steps{
+            dir(env.LOCATION_PROJECT) {
+              bat './gradlew --no-daemon --debug :app:connectedDevDebugAndroidTest'
+            }
+          }
+        //Build the apk and the test apk which will run the tests on the apk
+//           bat 'chmod +x gradlew && ./gradlew --no-daemon --stacktrace clean :app:assembleDevDebug :app:assembleDevDebugAndroidTest'
+        }
+
+//         stage('ui Tests') {
+//             steps {
+//                 dir(env.LOCATION_PROJECT) {
+//                     bat "./gradlew connectedDebugAndroidTest"
+//
+//                 }
+//             }
+//         }
     }
 }
 
