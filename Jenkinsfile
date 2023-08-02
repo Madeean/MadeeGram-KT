@@ -26,7 +26,12 @@ pipeline {
         }
 
         stage('Unit Tests') {
-            bat 'fastlane runUnitTest'
+            steps {
+                dir(env.LOCATION_PROJECT) {
+                    bat "fastline runUnitTest"
+
+                }
+            }
         }
     }
 }
