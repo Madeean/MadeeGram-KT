@@ -10,10 +10,6 @@ for_lane 'runBuildApk' do
   package_name("com.madeean.madeegram_kt")
 end
 
-for_lane 'testGoogle' do
-  package_name("com.madeean.madeegram_kt")
-end
-
 for_lane 'distribute' do
   package_name("com.madeean.madeegram_kt")
 end
