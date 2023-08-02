@@ -10,17 +10,8 @@ pipeline {
             steps {
                 script {
                   dir(env.LOCATION_PROJECT) {
-                    bat "./gradlew clean"
+                    bat "fastlane runClean"
                   }
-                }
-            }
-        }
-
-        stage('Compile & Build APK') {
-            steps {
-                dir(env.LOCATION_PROJECT) {
-                    bat 'java -version'
-                    bat './gradlew clean assembleDebug'
                 }
             }
         }
@@ -33,5 +24,16 @@ pipeline {
                 }
             }
         }
+
+        stage('Compile & Build APK') {
+            steps {
+                dir(env.LOCATION_PROJECT) {
+                    bat 'java -version'
+                    bat 'fastlane runBuildApk'
+                }
+            }
+        }
+
+
     }
 }
