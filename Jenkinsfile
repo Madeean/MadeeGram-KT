@@ -28,8 +28,8 @@ pipeline {
         stage('Unit Tests') {
             steps {
                 dir(env.LOCATION_PROJECT) {
+                    bat 'gem -v'
                     bat "fastlane runUnitTest"
-
                 }
             }
         }
