@@ -14,22 +14,19 @@ platform :android do
     gradle(task:"assembleDebug")
   end
 
-  lane :build_for_screengrab do
-    gradle(
-      task: 'clean'
-    )
-    build_android_app(
-      task: 'assemble',
-      build_type: 'Debug'
-    )
-    build_android_app(
-      task: 'assemble',
-      build_type: 'AndroidTest'
-    )
-  end
+     ######## FIREBASE DISTRIBUTION  ########
+    desc "Submit a new Google Test Build to Firebase App Distribution"
+    lane :distribute do
+            build_android_app(task:"clean assembleDebug")
+            # build_android_app is a built-in fastlane action.
+            release = firebase_app_distribution(
+                app: "1:886936358353:android:0556937aa4ecaf36ba64f0",
+                testers: "tester1@company.com",
+                service_credentials_file: "fastlane/firebase_login_credentials.json",
+                release_notes: "Lots of amazing new features to test out!"
+            )
+    end
 
-  lane :uiTest do
-    gradle(task:"connectedDebugAndroidTest")
-  end
+
 
 end

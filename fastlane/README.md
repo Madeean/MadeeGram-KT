@@ -39,13 +39,13 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### android build_for_screengrab
+### android distribute
 
 ```sh
-[bundle exec] fastlane android build_for_screengrab
+[bundle exec] fastlane android distribute
 ```
 
-Build debug and test APK for screenshots
+Submit a new Google Test Build to Firebase App Distribution
 
 ----
 
