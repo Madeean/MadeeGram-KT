@@ -1,3 +1,11 @@
 for_lane 'runUnitTest' do
   package_name("com.madeean.madeegram_kt")
 end
+
+for_lane 'runClean' do
+  package_name("com.madeean.madeegram_kt")
+end
+
+for_lane 'runBuildApk' do
+  package_name("com.madeean.madeegram_kt")
+end
