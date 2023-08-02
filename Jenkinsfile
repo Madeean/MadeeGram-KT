@@ -60,7 +60,7 @@ pipeline {
         stage('ui test') {
           steps{
             dir(env.LOCATION_PROJECT) {
-              bat './gradlew --no-daemon --debug :app:connectedDebugAndroidTest'
+              bat './gradlew :app:connectedDebugAndroidTest'
             }
           }
         //Build the apk and the test apk which will run the tests on the apk
