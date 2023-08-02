@@ -26,12 +26,7 @@ pipeline {
         }
 
         stage('Unit Tests') {
-            steps {
-                dir(env.LOCATION_PROJECT) {
-                    bat "./gradlew test"
-
-                }
-            }
+            bat 'fastlane runUnitTest'
         }
     }
 }
