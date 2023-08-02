@@ -50,7 +50,7 @@ pipeline {
         stage('Build & Install') {
           steps{
             dir(env.LOCATION_PROJECT) {
-              bat 'chmod +x gradlew && ./gradlew --no-daemon --stacktrace clean :app:assembleDevDebug :app:assembleDevDebugAndroidTest'
+              bat './gradlew --no-daemon --stacktrace clean :app:assembleDevDebug :app:assembleDevDebugAndroidTest'
             }
           }
         //Build the apk and the test apk which will run the tests on the apk
