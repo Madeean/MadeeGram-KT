@@ -50,7 +50,7 @@ pipeline {
         stage('ui Tests') {
             steps {
                 dir(env.LOCATION_PROJECT) {
-                    bat "./gradlew connectedAndroidTest"
+                    bat "./gradlew connectedDebugAndroidTest"
 
                 }
             }
