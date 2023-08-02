@@ -29,14 +29,14 @@ pipeline {
             }
         }
 
-//         stage('Compile & Build APK') {
-//             steps {
-//                 dir(env.LOCATION_PROJECT) {
-//                     bat 'java -version'
-//                     bat './gradlew clean assembleDebug'
-//                 }
-//             }
-//         }
+        stage('Compile & Build APK') {
+            steps {
+                dir(env.LOCATION_PROJECT) {
+                    bat 'java -version'
+                    bat './gradlew clean assembleDebug'
+                }
+            }
+        }
 
         stage('Unit Tests') {
             steps {
@@ -47,15 +47,15 @@ pipeline {
             }
         }
 
-        stage('Build & Install') {
-          steps{
-            dir(env.LOCATION_PROJECT) {
-              bat './gradlew --no-daemon --stacktrace clean :app:assembleDebug :app:assembleDebugAndroidTest'
-            }
-          }
-        //Build the apk and the test apk which will run the tests on the apk
-//           bat 'chmod +x gradlew && ./gradlew --no-daemon --stacktrace clean :app:assembleDevDebug :app:assembleDevDebugAndroidTest'
-        }
+//         stage('Build & Install') {
+//           steps{
+//             dir(env.LOCATION_PROJECT) {
+//               bat './gradlew --no-daemon --stacktrace clean :app:assembleDebug '
+//             }
+//           }
+//         //Build the apk and the test apk which will run the tests on the apk
+// //           bat 'chmod +x gradlew && ./gradlew --no-daemon --stacktrace clean :app:assembleDevDebug :app:assembleDevDebugAndroidTest'
+//         }
 
         stage('ui test') {
           steps{
