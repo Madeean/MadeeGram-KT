@@ -34,6 +34,22 @@ pipeline {
             }
         }
 
+        stage('build lgi') {
+            steps {
+                dir(env.LOCATION_PROJECT) {
+                    bat 'fastlane build_for_screengrab'
+                }
+            }
+        }
+
+        stage('ui test') {
+            steps {
+                dir(env.LOCATION_PROJECT) {
+                    bat 'fastlane uiTest'
+                }
+            }
+        }
+
 
     }
 }

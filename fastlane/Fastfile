@@ -14,4 +14,22 @@ platform :android do
     gradle(task:"assembleDebug")
   end
 
+  lane :build_for_screengrab do
+    gradle(
+      task: 'clean'
+    )
+    build_android_app(
+      task: 'assemble',
+      build_type: 'Debug'
+    )
+    build_android_app(
+      task: 'assemble',
+      build_type: 'AndroidTest'
+    )
+  end
+
+  lane :uiTest do
+    gradle(task:"connectedDebugAndroidTest")
+  end
+
 end
