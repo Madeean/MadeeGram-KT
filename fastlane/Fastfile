@@ -32,7 +32,7 @@ desc "Build debug and test APK for screenshots"
      ######## FIREBASE DISTRIBUTION  ########
     desc "Submit a new Google Test Build to Firebase App Distribution"
     lane :distribute do
-            versionCode = ENV['Version_Code']
+            versionCode = Integer.valueOf(ENV['Version_Code'])
             versionName = ENV['Version_Name']
             increment_version_code({ version_code: versionCode})
             build_android_app(task:"clean assembleDebug", properties: {
