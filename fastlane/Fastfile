@@ -31,13 +31,20 @@ desc "Build debug and test APK for screenshots"
 
      ######## FIREBASE DISTRIBUTION  ########
     desc "Submit a new Google Test Build to Firebase App Distribution"
-    lane :distribute do
+    lane :distribute do |options|
+
             versionCode = ENV['Version_Code']
             versionName = ENV['Version_Name']
             increment_version_code({ version_code: versionCode})
-            build_android_app(task:"clean assembleDebug", properties: {
-                                                              "android.injected.version.name" => versionName,
-                                                            })
+            gradle(task:clean)
+            gradle(task: assembleDebug,
+            properties: {
+                 "android.injected.version.name" => versionName,
+              })
+            )
+#             build_android_app(task:"clean assembleDebug", properties: {
+#                                                                "android.injected.version.name" => versionName,
+#                                                             })
             # build_android_app is a built-in fastlane action.
             release = firebase_app_distribution(
                 app: "1:886936358353:android:0556937aa4ecaf36ba64f0",
