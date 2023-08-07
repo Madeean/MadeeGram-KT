@@ -36,8 +36,8 @@ desc "Build debug and test APK for screenshots"
             versionCode = ENV['Version_Code']
             versionName = ENV['Version_Name']
             increment_version_code({ version_code: versionCode})
-            gradle(task:clean)
-            gradle(task: assembleDebug,
+            gradle(task:'clean')
+            gradle(task: 'assembleDebug',
             properties: {
                  "android.injected.version.name" => versionName,
               }
