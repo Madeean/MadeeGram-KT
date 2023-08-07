@@ -98,7 +98,7 @@ pipeline {
         stage('deploy ke firebase') {
             steps {
                 dir(env.LOCATION_PROJECT) {
-                    bat 'fastlane distribute --version ${Version_Code}'
+                    bat 'fastlane distribute  Version_Code:${params.Version_Code}'
                 }
             }
         }
