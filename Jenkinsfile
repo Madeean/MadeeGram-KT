@@ -98,8 +98,7 @@ pipeline {
         stage('deploy ke firebase') {
             steps {
                 dir(env.LOCATION_PROJECT) {
-                    int number = Integer.valueOf(params.Version_Code);
-                    bat 'fastlane distribute  Version_Code:${number} Version_Name:${params.Version_Name}'
+                    bat 'fastlane distribute  Version_Code:${Version_Code} Version_Name:${params.Version_Name}'
                 }
             }
         }
