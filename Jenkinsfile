@@ -25,27 +25,40 @@ pipeline {
 //             }
 //         }
 
-        stage('Tests') {
-          steps {
-            parallel(
-              stage('Unit Test') {
-                steps {
-                    dir(env.LOCATION_PROJECT) {
-                        bat 'gem -v'
-                        bat "fastlane runUnitTest"
-                    }
-                }
-              }
-              stage('Ui Test') {
-                steps {
-                    dir(env.LOCATION_PROJECT) {
-                        echo "ui test"
-                    }
-                }
-              }
-            )
-          }
-        }
+//         stage('Tests') {
+//           steps {
+//             parallel(
+//               stage('Unit Test') {
+//                 steps {
+//                     dir(env.LOCATION_PROJECT) {
+//                         bat 'gem -v'
+//                         bat "fastlane runUnitTest"
+//                     }
+//                 }
+//               }
+//               stage('Ui Test') {
+//                 steps {
+//                     dir(env.LOCATION_PROJECT) {
+//                         echo "ui test"
+//                     }
+//                 }
+//               }
+//             )
+//           }
+//         }
+
+stage('run-parallel-branches') {
+  steps {
+    parallel(
+      a: {
+        echo "This is branch a"
+      },
+      b: {
+        echo "This is branch b"
+      }
+    )
+  }
+}
 
         stage('Compile & Build APK') {
             steps {
