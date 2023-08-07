@@ -32,11 +32,10 @@ desc "Build debug and test APK for screenshots"
      ######## FIREBASE DISTRIBUTION  ########
     desc "Submit a new Google Test Build to Firebase App Distribution"
     lane :distribute do
-            versionCode = Integer.parseInt(ENV['Version_Code'])
+            versionCode = ENV['Version_Code']
             versionName = ENV['Version_Name']
             increment_version_code({ version_code: versionCode})
             build_android_app(task:"clean assembleDebug", properties: {
-                                                              "android.injected.version.code" => versionCode,
                                                               "android.injected.version.name" => versionName,
                                                             })
             # build_android_app is a built-in fastlane action.
