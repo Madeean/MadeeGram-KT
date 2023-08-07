@@ -39,7 +39,7 @@ desc "Build debug and test APK for screenshots"
             gradle(task:'clean')
             gradle(task: 'assembleDebug',
             properties: {
-                 "android.injected.version.name" => versionName,
+                 "android.injected.version.name" => '${5.0}',
               }
             )
 #             build_android_app(task:"clean assembleDebug", properties: {
