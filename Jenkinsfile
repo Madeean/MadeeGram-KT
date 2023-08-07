@@ -6,15 +6,15 @@ pipeline {
       LOCATION_PROJECT = 'E:\\Jenkins_home\\workspace\\abc'
     }
     stages {
-        stage('Clean Gradle Cache') {
-            steps {
-                script {
-                  dir(env.LOCATION_PROJECT) {
-                    bat "fastlane runClean"
-                  }
-                }
-            }
-        }
+//         stage('Clean Gradle Cache') {
+//             steps {
+//                 script {
+//                   dir(env.LOCATION_PROJECT) {
+//                     bat "fastlane runClean"
+//                   }
+//                 }
+//             }
+//         }
 
 //         stage('ui Tests') {
 //             steps {
@@ -79,26 +79,26 @@ pipeline {
 //         }
 //
 
-        stage('Unit Test') {
-            steps {
-                dir(env.LOCATION_PROJECT) {
-                    bat 'fastlane runUnitTest'
-                }
-            }
-        }
-
-        stage('Ui Test') {
-            steps {
-                dir(env.LOCATION_PROJECT) {
-                    bat 'fastlane build_and_screengrab'
-                }
-            }
-        }
+//         stage('Unit Test') {
+//             steps {
+//                 dir(env.LOCATION_PROJECT) {
+//                     bat 'fastlane runUnitTest'
+//                 }
+//             }
+//         }
+//
+//         stage('Ui Test') {
+//             steps {
+//                 dir(env.LOCATION_PROJECT) {
+//                     bat 'fastlane build_and_screengrab'
+//                 }
+//             }
+//         }
 
         stage('deploy ke firebase') {
             steps {
                 dir(env.LOCATION_PROJECT) {
-                    bat 'fastlane distribute'
+                    bat 'fastlane distribute --version ${Version_Code}'
                 }
             }
         }
