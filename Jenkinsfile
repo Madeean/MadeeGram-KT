@@ -59,7 +59,7 @@ pipeline {
             stage('Ui Test'){
               steps{
                 dir(env.LOCATION_PROJECT){
-                  echo "fastlane build_and_screengrab"
+                  bat "fastlane build_and_screengrab"
                 }
               }
             }
