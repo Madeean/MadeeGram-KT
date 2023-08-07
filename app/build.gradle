@@ -14,18 +14,23 @@ android {
     applicationId "com.madeean.madeegram_kt"
     minSdk 24
     targetSdk 33
-    versionCode 3
-    versionName "3.0"
+    versionCode 4
+    versionName "4.0"
 
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
   }
 
   buildTypes {
     release {
-      minifyEnabled false
+      minifyEnabled true
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
+    debug{
+      resValue "string", "appliname", "Alfagift Mini Staging"
+      debuggable true
+    }
   }
+
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_17
     targetCompatibility JavaVersion.VERSION_17
@@ -35,9 +40,6 @@ android {
   }
   buildFeatures {
     viewBinding true
-  }
-  configurations.all {
-    resolutionStrategy { force 'androidx.core:core-ktx:1.6.0' }
   }
 }
 
@@ -53,8 +55,6 @@ dependencies {
   implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
   implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
 
-  //image slider
-  implementation 'com.github.smarteist:autoimageslider:1.4.0'
 
   //image circle
   implementation 'de.hdodenhof:circleimageview:3.1.0'

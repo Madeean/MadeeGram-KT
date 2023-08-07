@@ -22,7 +22,7 @@ platform :android do
             release = firebase_app_distribution(
                 app: "1:886936358353:android:0556937aa4ecaf36ba64f0",
                 testers: "tester1@company.com",
-                service_credentials_file: "fastlane/firebase_login_credentials.json",
+                firebase_cli_token: "1//0gYN_CrG7jSwtCgYIARAAGBASNwF-L9IraKECfb4zm_kj_NjO3jKKN1164kGFesJtumayzBAjgl0bIozj-9hNfTXl0YFG-t2iNnI",
                 release_notes: "Lots of amazing new features to test out!"
             )
     end

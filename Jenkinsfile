@@ -16,13 +16,35 @@ pipeline {
             }
         }
 
-        stage('Unit Tests') {
-            steps {
-                dir(env.LOCATION_PROJECT) {
-                    bat 'gem -v'
-                    bat "fastlane runUnitTest"
+//         stage('Unit Tests') {
+//             steps {
+//                 dir(env.LOCATION_PROJECT) {
+//                     bat 'gem -v'
+//                     bat "fastlane runUnitTest"
+//                 }
+//             }
+//         }
+
+        stage('Tests') {
+          steps {
+            parallel(
+              stage('Unit Test') {
+                steps {
+                    dir(env.LOCATION_PROJECT) {
+                        bat 'gem -v'
+                        bat "fastlane runUnitTest"
+                    }
                 }
-            }
+              }
+              stage('Ui Test') {
+                steps {
+                    dir(env.LOCATION_PROJECT) {
+                        echo "ui test"
+                    }
+                }
+              }
+            )
+          }
         }
 
         stage('Compile & Build APK') {
