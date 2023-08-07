@@ -47,24 +47,27 @@ pipeline {
 //           }
 //         }
 
-        stage('run-parallel-branches') {
-          parallel{
-            stage('Unit Test'){
-              steps{
-                dir(env.LOCATION_PROJECT) {
-                    bat 'fastlane runUnitTest'
-                }
-              }
-            }
-            stage('Ui Test'){
-              steps{
-                dir(env.LOCATION_PROJECT){
-                  bat "fastlane build_and_screengrab"
-                }
-              }
-            }
-          }
-        }
+//         stage('run-parallel-branches') {
+//           parallel{
+//             stage('Unit Test'){
+//               steps{
+//                 dir(env.LOCATION_PROJECT) {
+//                     bat 'fastlane runUnitTest'
+//                 }
+//               }
+//             }
+//             stage('Ui Test'){
+//               steps{
+//                 dir(env.LOCATION_PROJECT){
+//                   bat "fastlane build_and_screengrab"
+//                 }
+//               }
+//             }
+//           }
+//         }
+
+
+
 //
 //         stage('Compile & Build APK') {
 //             steps {
@@ -75,6 +78,23 @@ pipeline {
 //             }
 //         }
 //
+
+        stage('Unit Test') {
+            steps {
+                dir(env.LOCATION_PROJECT) {
+                    bat 'fastlane runUnitTest'
+                }
+            }
+        }
+
+        stage('Ui Test') {
+            steps {
+                dir(env.LOCATION_PROJECT) {
+                    bat 'fastlane build_and_screengrab'
+                }
+            }
+        }
+
         stage('deploy ke firebase') {
             steps {
                 dir(env.LOCATION_PROJECT) {
