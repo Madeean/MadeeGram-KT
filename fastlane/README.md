@@ -39,6 +39,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
+### android build_and_screengrab
+
+```sh
+[bundle exec] fastlane android build_and_screengrab
+```
+
+Build debug and test APK for screenshots
+
 ### android distribute
 
 ```sh

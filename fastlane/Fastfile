@@ -14,6 +14,27 @@ platform :android do
     gradle(task:"assembleDebug")
   end
 
+desc "Build debug and test APK for screenshots"
+  lane :build_and_screengrab do
+    build_android_app(
+      task: 'assemble',
+      build_type: 'Debug'
+    )
+    build_android_app(
+      task: 'assemble',
+      build_type: 'AndroidTest'
+    )
+    capture_android_screenshots(
+      app_package_name: 'com.madeean.madeegram_kt',
+      locales: "en-US",
+      clear_previous_screenshots: true,
+      app_apk_path: "app/build/outputs/apk/debug/app-debug.apk",
+      tests_apk_path: "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk"
+    )
+  end
+
+
+
      ######## FIREBASE DISTRIBUTION  ########
     desc "Submit a new Google Test Build to Firebase App Distribution"
     lane :distribute do

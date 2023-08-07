@@ -125,4 +125,6 @@ dependencies {
 
   debugImplementation("androidx.fragment:fragment-testing-manifest:1.6.0-alpha04")
   debugImplementation("androidx.fragment:fragment-testing:1.6.0-alpha04")
+
+  androidTestImplementation 'tools.fastlane:screengrab:2.1.1'
 }
