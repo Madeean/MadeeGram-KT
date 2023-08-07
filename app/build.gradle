@@ -25,10 +25,6 @@ android {
       minifyEnabled true
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
-    debug{
-      resValue "string", "appliname", "Alfagift Mini Staging"
-      debuggable true
-    }
   }
 
   compileOptions {
