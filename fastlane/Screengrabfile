@@ -4,7 +4,7 @@ app_package_name('com.madeean.madeegram_kt')
 # use_tests_in_packages(['com.madeean.madeegram_kt.present.view.splashscreen'])
 
 app_apk_path('app/build/outputs/apk/debug/app-debug.apk')
-tests_apk_path('app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk')
+tests_apk_path('app/build/outputs/apk/debug/app-debug.apk')
 
 locales('en-US')
 
