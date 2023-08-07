@@ -47,18 +47,24 @@ pipeline {
 //           }
 //         }
 
-stage('run-parallel-branches') {
-  steps {
-    parallel(
-      a: {
-        echo "This is branch a"
-      },
-      b: {
-        echo "This is branch b"
-      }
-    )
-  }
-}
+        stage('run-parallel-branches') {
+          parallel{
+            stage('Unit Test'){
+              steps{
+                dir(env.LOCATION_PROJECT) {
+                    bat 'fastlane runUnitTest'
+                }
+              }
+            }
+            stage('Ui Test'){
+              steps{
+                dir(env.LOCATION_PROJECT){
+                  echo "ui test"
+                }
+              }
+            }
+          }
+        }
 
         stage('Compile & Build APK') {
             steps {
