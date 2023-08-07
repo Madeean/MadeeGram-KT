@@ -40,7 +40,7 @@ desc "Build debug and test APK for screenshots"
             gradle(task: assembleDebug,
             properties: {
                  "android.injected.version.name" => versionName,
-              })
+              }
             )
 #             build_android_app(task:"clean assembleDebug", properties: {
 #                                                                "android.injected.version.name" => versionName,
