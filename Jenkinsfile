@@ -15,9 +15,9 @@ pipeline {
     stages {
       stage('Example') {
         steps {
-          withFileParameter('small') {
-            bat 'type $small'
-          }
+//           withFileParameter('small') {
+//             bat 'type $small'
+//           }
           unstash 'large'
           bat 'type large'
         }
