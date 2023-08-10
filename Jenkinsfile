@@ -11,12 +11,16 @@ pipeline {
 //         text(defaultValue: '', description: 'Release Notes', name: 'Release_Notes')
 //             base64File 'small'
             stashedFile 'local.properties'
+            stashedFile 'google-services.json'
     }
     stages {
       stage('Example') {
         steps {
           unstash 'local.properties'
           bat 'type local.properties'
+
+          unstash 'google-services.json'
+          bat 'type google-services.json'
         }
       }
 
