@@ -5,7 +5,23 @@ pipeline {
       ANDROID_HOME = 'D:\\AndroidSdk\\Android\\Sdk'
       LOCATION_PROJECT = 'E:\\Jenkins_home\\workspace\\abc'
     }
+    parameters {
+        string(defaultValue: '1', description: 'Version Code', name: 'Version_Code')
+        string(defaultValue: '1', description: 'Version Name', name: 'Version_Name')
+        text(defaultValue: '', description: 'Release Notes', name: 'Release_Notes')
+        base64File 'small'
+    }
     stages {
+      stage('file'){
+        steps{
+          script{
+            withFileParameter('small') {
+              bat 'type $small'
+            }
+          }
+        }
+      }
+
 //         stage('Clean Gradle Cache') {
 //             steps {
 //                 script {
@@ -95,13 +111,13 @@ pipeline {
 //             }
 //         }
 
-        stage('deploy ke firebase') {
-            steps {
-                dir(env.LOCATION_PROJECT) {
-                    bat 'fastlane distribute  Version_Code:${Version_Code} Version_Name:${params.Version_Name}'
-                }
-            }
-        }
+//         stage('deploy ke firebase') {
+//             steps {
+//                 dir(env.LOCATION_PROJECT) {
+//                     bat 'fastlane distribute  Version_Code:${Version_Code} Version_Name:${params.Version_Name}'
+//                 }
+//             }
+//         }
 
 
     }
