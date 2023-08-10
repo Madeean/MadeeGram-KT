@@ -21,6 +21,8 @@ pipeline {
 
           unstash 'google-services.json'
           bat 'type google-services.json'
+
+          bat 'move google-services.json app'
         }
       }
 
