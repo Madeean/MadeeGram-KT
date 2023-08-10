@@ -16,7 +16,7 @@ pipeline {
         steps{
           script{
             withFileParameter('small') {
-              bat 'type $small'
+              echo '$small'
             }
           }
         }
