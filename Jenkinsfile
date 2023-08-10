@@ -9,16 +9,17 @@ pipeline {
         string(defaultValue: '1', description: 'Version Code', name: 'Version_Code')
         string(defaultValue: '1', description: 'Version Name', name: 'Version_Name')
         text(defaultValue: '', description: 'Release Notes', name: 'Release_Notes')
-        base64File 'small'
+            base64File 'small'
+            stashedFile 'large'
     }
     stages {
-      stage('file'){
-        steps{
-          script{
-            withFileParameter('small') {
-              bat 'echo $small'
-            }
+      stage('Example') {
+        steps {
+          withFileParameter('small') {
+            bat 'type $small'
           }
+          unstash 'large'
+          bat 'type large'
         }
       }
 
