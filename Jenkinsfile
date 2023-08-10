@@ -5,17 +5,18 @@ pipeline {
       ANDROID_HOME = 'D:\\AndroidSdk\\Android\\Sdk'
       LOCATION_PROJECT = 'E:\\Jenkins_home\\workspace\\abc'
     }
-//     parameters {
+    parameters {
 //         string(defaultValue: '1', description: 'Version Code', name: 'Version_Code')
 //         string(defaultValue: '1', description: 'Version Name', name: 'Version_Name')
 //         text(defaultValue: '', description: 'Release Notes', name: 'Release_Notes')
 //             base64File 'small'
-//             stashedFile 'large'
-//     }
+            stashedFile 'local.properties'
+    }
     stages {
       stage('Example') {
         steps {
-          bat "Get-Content local.properties | ConvertFrom-Json"
+          unstash 'local.properties'
+          bat 'type local.properties'
         }
       }
 
