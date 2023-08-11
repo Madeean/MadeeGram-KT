@@ -5,14 +5,14 @@ pipeline {
       ANDROID_HOME = 'D:\\AndroidSdk\\Android\\Sdk'
       LOCATION_PROJECT = 'E:\\Jenkins_home\\workspace\\abc'
     }
-    parameters {
+//     parameters {
 //         string(defaultValue: '1', description: 'Version Code', name: 'Version_Code')
 //         string(defaultValue: '1', description: 'Version Name', name: 'Version_Name')
 //         text(defaultValue: '', description: 'Release Notes', name: 'Release_Notes')
 //             base64File 'small'
 //             stashedFile(name: "local.properties", description: "local.properties")
 //             stashedFile(name: "google-services.json", description: "google-services.json")
-    }
+//     }
     stages {
 //       stage('Example') {
 //         steps {
