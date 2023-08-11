@@ -10,19 +10,43 @@ pipeline {
 //         string(defaultValue: '1', description: 'Version Name', name: 'Version_Name')
 //         text(defaultValue: '', description: 'Release Notes', name: 'Release_Notes')
 //             base64File 'small'
-            stashedFile 'local.properties'
-            stashedFile 'google-services.json'
+//             stashedFile(name: "local.properties", description: "local.properties")
+//             stashedFile(name: "google-services.json", description: "google-services.json")
     }
     stages {
-      stage('Example') {
-        steps {
-          unstash 'local.properties'
-          bat 'type local.properties'
+//       stage('Example') {
+//         steps {
+//           unstash 'local.properties'
+//           bat 'type local.properties'
+//
+//           unstash 'google-services.json'
+//           bat 'type google-services.json'
+//
+//           bat 'move google-services.json app'
+//         }
+//       }
 
-          unstash 'google-services.json'
-          bat 'type google-services.json'
-
-          bat 'move google-services.json app'
+      stage('Multiple Job'){
+        parallel{
+          stage('first job'){
+            steps{
+              build([
+                  job       : 'def',
+                  wait      : false,
+//                   parameters: [
+//                       string(name: 'PARAM_1', value: "${PARAM_1}")
+//                   ]
+              ])
+            }
+          }
+          stage('second job'){
+            steps{
+              build([
+                job: "master_vis",
+                wait:false
+              ])
+            }
+          }
         }
       }
 
