@@ -1,5 +1,11 @@
 workflows:
   my-workflow:
     scripts:
-      - name: say hello
-        script: echo "Hello Codemagician!"
+      - name: Clean Gradle Cache
+        script: fastlane runClean
+      - name: Run Unit Test
+        script: fastlane runUnitTest
+      - name: run UI Test
+        script: echo "UI Test"
+      - name: build
+        script: fastlane runBuildApk
