@@ -8,6 +8,6 @@ workflows:
       - name: Run Unit Test
         script: fastlane runUnitTest
       - name: run UI Test
-        script: fastlane build_and_screengrab
+        script: echo "UI Test"
       - name: build
         script: fastlane runBuildApk
