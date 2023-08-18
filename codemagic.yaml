@@ -1,5 +1,7 @@
 workflows:
   my-workflow:
+    environment:
+      java: 17
     scripts:
       - name: Clean Gradle Cache
         script: fastlane runClean
