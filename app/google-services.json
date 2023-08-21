@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "886936358353",
+    "project_id": "abc-test-edab9",
+    "storage_bucket": "abc-test-edab9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886936358353:android:0556937aa4ecaf36ba64f0",
+        "android_client_info": {
+          "package_name": "com.madeean.madeegram_kt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886936358353-du6v2m73rhk9m1junqvblqqhq6mm9vv0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6I9w_J-m56qsAN2kdOVDVJDA1sF_ls_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886936358353-du6v2m73rhk9m1junqvblqqhq6mm9vv0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
