@@ -10,7 +10,7 @@ workflows:
 #        script: ls $FCI_BUILD_DIR/app
         script: |
           echo "$GOOGLE_SERVICES" > encode.txt
-          base64 --decode encode.txt google-services.json
+          base64 --decode -i encode.txt -o google-services.json
           ls $FCI_BUILD_DIR/app
       - name: Clean Gradle Cache
         script: fastlane runClean
