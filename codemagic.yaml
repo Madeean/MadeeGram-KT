@@ -11,7 +11,8 @@ workflows:
         script: |
           echo "$GOOGLE_SERVICES" > encode.txt
           base64 --decode -i encode.txt -o google-services.json
-          ls $FCI_BUILD_DIR
+          mv $FCI_BUILD_DIR/google-services.json $FCI_BUILD_DIR/app
+          ls $FCI_BUILD_DIR/app
       - name: Clean Gradle Cache
         script: fastlane runClean
       - name: Run Unit Test
