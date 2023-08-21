@@ -1,8 +1,12 @@
 workflows:
   my-workflow:
     environment:
+      groups:
+        - sdk
       java: 17
     scripts:
+      - name: Setup File
+        script: echo $GOOGLE_SERVICES | base64 --decode > /app
       - name: Clean Gradle Cache
         script: fastlane runClean
       - name: Run Unit Test
