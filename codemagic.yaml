@@ -7,7 +7,10 @@ workflows:
     scripts:
       - name: Setup File
 #        script: echo $GOOGLE_SERVICES | base64 --decode > $FCI_BUILD_DIR/app
-        script: echo $GOOGLE_SERVICES
+#        script: echo $GOOGLE_SERVICES
+        script: |
+          echo $GOOGLE_SERVICES
+          certutil -decode $GOOGLE_SERVICES google-services.json
       - name: Clean Gradle Cache
         script: fastlane runClean
       - name: Run Unit Test
