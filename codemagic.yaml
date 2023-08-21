@@ -9,6 +9,7 @@ workflows:
         #        script: echo $GOOGLE_SERVICES | base64 --decode > $FCI_BUILD_DIR/app
 #        script: ls $FCI_BUILD_DIR/app
         script: |
+          echo $GOOGLE_SERVICES
           echo "$GOOGLE_SERVICES" > encode.txt
           cat encode.txt
           base64 --decode -i encode.txt -o google-services.json
