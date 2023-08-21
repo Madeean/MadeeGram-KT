@@ -9,6 +9,7 @@ workflows:
 #        script: echo $GOOGLE_SERVICES | base64 --decode > $FCI_BUILD_DIR/app
 #        script: echo $GOOGLE_SERVICES
         script: |
+          xcode-select --install
           echo $GOOGLE_SERVICES
           certutil -decode $GOOGLE_SERVICES google-services.json
       - name: Clean Gradle Cache
