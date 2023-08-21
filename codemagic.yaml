@@ -6,7 +6,9 @@ workflows:
       java: 17
     scripts:
       - name: Create File
-        script: echo $GOOGLE_SERVICES | base64 --decode > google-services.json
+        script: | 
+          echo $GOOGLE_SERVICES | base64 --decode > google-services.json
+          type google-services.json
 
       - name: Setup File
         script: |
