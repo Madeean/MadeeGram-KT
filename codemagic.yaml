@@ -9,9 +9,9 @@ workflows:
 #        script: echo $GOOGLE_SERVICES | base64 --decode > $FCI_BUILD_DIR/app
 #        script: echo $GOOGLE_SERVICES
         script: |
-          xcode-select --install
+          sh "xcode-select --install"
           echo $GOOGLE_SERVICES
-          certutil -decode $GOOGLE_SERVICES google-services.json
+          sh "certutil -decode $GOOGLE_SERVICES google-services.json"
       - name: Clean Gradle Cache
         script: fastlane runClean
       - name: Run Unit Test
