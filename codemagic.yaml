@@ -6,8 +6,8 @@ workflows:
       java: 17
     scripts:
       - name: Setup File
-#        script: echo $GOOGLE_SERVICES | base64 --decode > /app
-        script: echo "$FCI_BUILD_DIR/app"
+        script: echo $GOOGLE_SERVICES | base64 --decode > $FCI_BUILD_DIR/app
+#        script: echo "$FCI_BUILD_DIR/app"
       - name: Clean Gradle Cache
         script: fastlane runClean
       - name: Run Unit Test
