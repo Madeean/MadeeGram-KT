@@ -12,7 +12,7 @@ workflows:
         script: |
           mv $FCI_BUILD_DIR/google-services.json $FCI_BUILD_DIR/app
           ls $FCI_BUILD_DIR/app
-          type $FCI_BUILD_DIR/app/google-services.json
+          cat $FCI_BUILD_DIR/app/google-services.json
       - name: Clean Gradle Cache
         script: fastlane runClean
       - name: Run Unit Test
