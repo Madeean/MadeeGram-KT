@@ -5,11 +5,13 @@ workflows:
         - sdk
       java: 17
     scripts:
-      - name: Create File
-        script: | 
-          echo $GOOGLE_SERVICES | base64 --decode > google-services.json
       - name: Setup File
+        #        script: echo $GOOGLE_SERVICES | base64 --decode > $FCI_BUILD_DIR/app
+#        script: ls $FCI_BUILD_DIR/app
         script: |
+          echo "$GOOGLE_SERVICES" > encode.txt
+          cat encode.txt
+          base64 --decode -i encode.txt -o google-services.json
           mv $FCI_BUILD_DIR/google-services.json $FCI_BUILD_DIR/app
           ls $FCI_BUILD_DIR/app
           cat $FCI_BUILD_DIR/app/google-services.json
