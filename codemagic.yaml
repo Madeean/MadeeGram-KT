@@ -3,9 +3,6 @@ workflows:
     environment:
       java: 17
     scripts:
-      - name: Setup File
-        script: |
-          mv E:\google-services.json app/
       - name: Clean Gradle Cache
         script: fastlane runClean
       - name: Run Unit Test
