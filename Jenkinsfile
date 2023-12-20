@@ -9,21 +9,21 @@ pipeline {
         string(defaultValue: '1', description: 'Version Code', name: 'Version_Code')
         string(defaultValue: '1', description: 'Version Name', name: 'Version_Name')
 //         text(defaultValue: '', description: 'Release Notes', name: 'Release_Notes')
-//         stashedFile(name: "local.properties", description: "local.properties")
-//         stashedFile(name: "google-services.json", description: "google-services.json")
+        stashedFile(name: "local.properties", description: "local.properties")
+        stashedFile(name: "google-services.json", description: "google-services.json")
     }
     stages {
-//       stage('Example') {
-//         steps {
-//           unstash 'local.properties'
-//           bat 'type local.properties'
-//
-//           unstash 'google-services.json'
-//           bat 'type google-services.json'
-//
-//           bat 'move google-services.json app'
-//         }
-//       }
+      stage('Example') {
+        steps {
+          unstash 'local.properties'
+          bat 'type local.properties'
+
+          unstash 'google-services.json'
+          bat 'type google-services.json'
+
+          bat 'move google-services.json app'
+        }
+      }
 
 //       stage('Multiple Job'){
 //         parallel{
