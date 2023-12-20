@@ -9,8 +9,8 @@ pipeline {
         string(defaultValue: '1', description: 'Version Code', name: 'Version_Code')
         string(defaultValue: '1', description: 'Version Name', name: 'Version_Name')
 //         text(defaultValue: '', description: 'Release Notes', name: 'Release_Notes')
-        stashedFile(name: "local.properties", description: "local.properties")
-        stashedFile(name: "google-services.json", description: "google-services.json")
+//         stashedFile(name: "local.properties", description: "local.properties")
+//         stashedFile(name: "google-services.json", description: "google-services.json")
 
 //         string(name: "VERSION_NAME", defaultValue: "4.21.12", trim: true, description: "ini version name")
 //         string(name: "VERSION_CODE", defaultValue: "4211200", trim: true, description: "ini version code")
