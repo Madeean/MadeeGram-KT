@@ -11,19 +11,26 @@ pipeline {
 //         text(defaultValue: '', description: 'Release Notes', name: 'Release_Notes')
         stashedFile(name: "local.properties", description: "local.properties")
         stashedFile(name: "google-services.json", description: "google-services.json")
+
+//         string(name: "VERSION_NAME", defaultValue: "4.21.12", trim: true, description: "ini version name")
+//         string(name: "VERSION_CODE", defaultValue: "4211200", trim: true, description: "ini version code")
+//         text(defaultValue: "NIT-209 - Penambahan Android ID di collection alfagift_member\nTASK-395 - Tampilan Alfastamp\nTASK-401 - Berikan informasi berapa msg blm terbaca di setiap tab.\nTASK-417 - Update Wording Email Alfacart -> Alfacare", description: 'ini release notes', name: 'RELEASE_NOTES')
+//         choice(name: "BUILD_VARIANT", choices: ["release", "beta", "debug"], description: "ini build variant")
+        stashedFile 'local.properties'
+        stashedFile 'google-services.json'
     }
     stages {
-      stage('Example') {
-        steps {
-          unstash 'local.properties'
-          bat 'type local.properties'
+       stage('Setup File'){
+          steps{
+              unstash 'local.properties'
 
-          unstash 'google-services.json'
-          bat 'type google-services.json'
+              unstash 'google-services.json'
 
-          bat 'move google-services.json app'
+              dir(env.WORKSPACE){
+                bat "move google-services.json app"
+              }
+          }
         }
-      }
 
 //       stage('Multiple Job'){
 //         parallel{
