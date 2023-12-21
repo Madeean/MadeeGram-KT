@@ -38,7 +38,7 @@ pipeline {
               extensions: [],
               userRemoteConfigs:
               [[credentialsId: '9adccf1e-c175-4138-9608-b10f1ef7db09',
-              url: 'https://github.com/Madeean/livestream.git']]
+              url: 'https://github.com/Madeean/MoviewApp.git']]
           )
         }
       }
