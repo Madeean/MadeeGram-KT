@@ -32,6 +32,12 @@ pipeline {
           }
         }
 
+        stage('checkout'){
+          steps{
+            git 'https://github.com/Madeean/RickAndMortyIos.git'
+          }
+        }
+
 //       stage('Multiple Job'){
 //         parallel{
 //           stage('first job'){
