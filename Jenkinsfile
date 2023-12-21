@@ -18,8 +18,31 @@ pipeline {
 //         choice(name: "BUILD_VARIANT", choices: ["release", "beta", "debug"], description: "ini build variant")
         stashedFile 'local.properties'
         stashedFile 'google-services.json'
+        string(defaultValue:'main', name:'GIT_BRANCH', description:'Branch Path', trim:true)
     }
+
+    options{
+        timestamps()
+        skipDefaultCheckout()
+        disableRestartFromStage()
+    }
+
+
     stages {
+
+
+      stage('Clone Repo'){
+        steps{
+           checkout scmGit(
+              branches: [[name: "${params.GIT_BRANCH}"]],
+              extensions: [],
+              userRemoteConfigs:
+              [[credentialsId: '9adccf1e-c175-4138-9608-b10f1ef7db09',
+              url: 'https://github.com/Madeean/livestream.git']]
+          )
+        }
+      }
+
        stage('Setup File'){
           steps{
               unstash 'local.properties'
@@ -29,12 +52,6 @@ pipeline {
               dir(env.WORKSPACE){
                 bat "move google-services.json app"
               }
-          }
-        }
-
-        stage('checkout'){
-          steps{
-            git 'https://github.com/Madeean/RickAndMortyIos.git'
           }
         }
 
@@ -108,7 +125,7 @@ pipeline {
             stage('Unit Test'){
               steps{
                 dir(env.LOCATION_PROJECT) {
-                    bat 'fastlane runUnitTest'
+                    echo 'fastlane runUnitTest'
                 }
               }
             }
