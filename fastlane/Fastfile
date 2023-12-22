@@ -30,17 +30,62 @@ desc "Build debug and test APK for screenshots"
 
 
      ######## FIREBASE DISTRIBUTION  ########
-    desc "Submit a new Google Test Build to Firebase App Distribution"
-    lane :distribute do |options|
-            build_android_app(task:"clean assembleDebug")
-            # build_android_app is a built-in fastlane action.
-            release = firebase_app_distribution(
+#     desc "Submit a new Google Test Build to Firebase App Distribution"
+#     lane :distribute do |options|
+#             build_android_app(task:"clean assembleDebug")
+#             # build_android_app is a built-in fastlane action.
+#             release = firebase_app_distribution(
+#                 app: "1:886936358353:android:0556937aa4ecaf36ba64f0",
+#                 testers: "tester1@company.com",
+#                 firebase_cli_token: "1//0gYN_CrG7jSwtCgYIARAAGBASNwF-L9IraKECfb4zm_kj_NjO3jKKN1164kGFesJtumayzBAjgl0bIozj-9hNfTXl0YFG-t2iNnI",
+#                 release_notes: "Lots of amazing new features to test out!"
+#             )
+#     end
+
+    desc "Submit a new Beta Build to Firebase App Distribution"
+        lane :deploy_to_firebase do |options|
+
+          versionCode = ENV['VERSION_CODE']
+          versionName = ENV['VERSION_NAME']
+          releaseNotes = ENV['RELEASE_NOTES'].gsub("\n", "\n")
+          buildVariant = ENV['BUILD_VARIANT']
+
+          increment_version_code({gradle_file_path: "app/build.gradle", version_code: versionCode})
+          increment_version_name({gradle_file_path: "app/build.gradle", version_name: versionName})
+#           build_android_app(task:"clean assemble", build_type: buildVariant)
+          build_android_app(task:"clean assembleDebug")
+
+          case buildVariant
+          when "debug"
+    #         firebase_app_distribution(
+    #             app: "1:650471391285:android:c1d31e1cbe8dbbbb",
+    #             release_notes: "TEST CICD MADE\nNIT-209 - Penambahan Android ID di collection alfagift_member\nTASK-395 - Tampilan Alfastamp\nTASK-401 - Berikan informasi berapa msg blm terbaca di setiap tab.\nTASK-417 - Update Wording Email Alfacart -> Alfacare",
+    #             firebase_cli_token: "1//0g2YwJ-ZSs1BgCgYIARAAGBASNwF-L9Irk-jUQlzHZuP9x1-3ckcjDIwzjxi5hUxrs_Maydo2_jduZB3vQHHQjYJPmcS_kR5bM6w",
+    #             groups:"android-developer"
+    #         )
+            firebase_app_distribution(
                 app: "1:886936358353:android:0556937aa4ecaf36ba64f0",
                 testers: "tester1@company.com",
                 firebase_cli_token: "1//0gYN_CrG7jSwtCgYIARAAGBASNwF-L9IraKECfb4zm_kj_NjO3jKKN1164kGFesJtumayzBAjgl0bIozj-9hNfTXl0YFG-t2iNnI",
-                release_notes: "Lots of amazing new features to test out!"
+                release_notes:releaseNotes
             )
-    end
+          when "beta"
+            firebase_app_distribution(
+                app: "1:650471391285:android:b89a035d04c9e44235317c",
+                release_notes: releaseNotes,
+                firebase_cli_token: "1//0g2YwJ-ZSs1BgCgYIARAAGBASNwF-L9Irk-jUQlzHZuP9x1-3ckcjDIwzjxi5hUxrs_Maydo2_jduZB3vQHHQjYJPmcS_kR5bM6w",
+                groups:"android-developer"
+            )
+          when "release"
+            firebase_app_distribution(
+                app: "1:650471391285:android:81c4bb3c8bd6b84a",
+                release_notes: releaseNotes,
+                firebase_cli_token: "1//0g2YwJ-ZSs1BgCgYIARAAGBASNwF-L9Irk-jUQlzHZuP9x1-3ckcjDIwzjxi5hUxrs_Maydo2_jduZB3vQHHQjYJPmcS_kR5bM6w",
+                groups:"android-developer"
+            )
+          end
+
+        end
 
 
 
